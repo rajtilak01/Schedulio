@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
+import { ClerkProvider } from "@clerk/nextjs"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    // <ClerkProvider>
+    <ClerkProvider>
       <html lang="en">
         <body
           className={cn(
@@ -27,6 +28,6 @@ export default function RootLayout({
           {children}
         </body>
       </html>
-    // </ClerkProvider>
+    </ClerkProvider>
   )
 }
