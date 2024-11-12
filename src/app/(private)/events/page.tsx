@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { db } from "@/drizzle/db";
 import { auth } from "@clerk/nextjs/server";
-import { CalendarPlus, CalendarRange } from "lucide-react";
+import { CalendarPlus, CalendarRange, Key } from "lucide-react";
 import Link from "next/link";
 
 export default async function EvnetsPage(){
@@ -27,7 +27,9 @@ export default async function EvnetsPage(){
       </div>
       {events.length > 0 ? (
         <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(400px,1fr))]">
-          Events
+          {events.map(event => (
+            <EventCard Key={event.id} {...event}/>
+          ))}
         </div>
       ) : (
         <div className="flex flex-col items-center gap-4">
@@ -43,4 +45,24 @@ export default async function EvnetsPage(){
       )}
     </>
   )
+}
+
+type EventCardProps = {
+  id: string,
+  isActive: boolean,
+  name: string,
+  description: string | null,
+  durationInMinutes: number,
+  clerkUserId: string
+}
+
+function EventCard({
+  id,
+  isActive,
+  name,
+  description,
+  durationInMinutes,
+  clerkUserId,
+}: EventCardProps){
+
 }
