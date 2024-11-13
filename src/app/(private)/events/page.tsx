@@ -8,6 +8,8 @@ import { auth } from "@clerk/nextjs/server";
 import { CalendarPlus, CalendarRange, Key } from "lucide-react";
 import Link from "next/link";
 
+export const revalidate = 0
+
 export default async function EvnetsPage(){
   const {userId, redirectToSignIn} = await auth();
   
