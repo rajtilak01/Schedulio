@@ -17,6 +17,7 @@ import {
   setMinutes,
 } from "date-fns"
 import { fromZonedTime } from "date-fns-tz"
+import _ from "lodash"
 
 export async function getValidTimesFromSchedule(
   timesInOrder: Date[],
@@ -35,7 +36,7 @@ export async function getValidTimesFromSchedule(
 
   if (schedule == null) return []
 
-  const groupedAvailabilities = Object.groupBy(
+  const groupedAvailabilities = _.groupBy(
     schedule.availabilities,
     a => a.dayOfWeek
   )
