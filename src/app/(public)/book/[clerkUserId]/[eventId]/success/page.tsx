@@ -16,8 +16,8 @@ import {
     params,
     searchParams,
   }: {
-    params: { clerkUserId: string; eventId: string };
-    searchParams: { startTime: string };
+    params: Promise<{ clerkUserId: string; eventId: string }>;
+    searchParams: Promise<{ startTime: string }>;
   }) {
     const { clerkUserId, eventId } = await params; // Await `params`
     const { startTime } = await searchParams; // Await `searchParams`

@@ -25,9 +25,9 @@ export const revalidate = 0
 export default async function BookEventPage({
   params,
 }: {
-  params: { clerkUserId: string; eventId: string }
+  params: Promise<{ clerkUserId: string; eventId: string }>
 }) {
-  const { clerkUserId, eventId } = await params;
+  const { clerkUserId, eventId } =await params;
   const event = await db.query.EventTable.findFirst({
     where: ({ clerkUserId: userIdCol, isActive, id }, { eq, and }) =>
       and(eq(isActive, true), eq(userIdCol, clerkUserId), eq(id, eventId)),
